@@ -1,0 +1,160 @@
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: none;
+  -webkit-box-shadow: none;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -webkit-appearance: textfield;
+          appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.body {
+  width: 100%;
+}
+
+.theme-light .navbarBody {
+  background: white;
+  height: 80px;
+  position: sticky;
+  z-index: 20;
+}
+.theme-light .navbarBody .logo .logoPrefix {
+  color: #0dada2;
+}
+.theme-light .navbarBody .logo .logoSuffix {
+  color: #256f9d;
+}
+.theme-light .navbarBody .navbarItems .navbarItem {
+  color: black;
+}
+.theme-light .navbarBody .actions button {
+  color: black;
+}
+.theme-light .navbarBody .profile .profileDetails .name {
+  color: black;
+}
+.theme-light .navbarBody .profile .profileDetails .username {
+  color: rgb(34, 33, 33);
+}
+.theme-light .navbarBody #toggleBtn .btn-open .bar1 {
+  transform: translate(0, 8.5px) rotate(-45deg);
+}
+.theme-light .navbarBody #toggleBtn .btn-open .bar2 {
+  opacity: 0;
+}
+.theme-light .navbarBody #toggleBtn .btn-open .bar3 {
+  transform: translate(0, -8.5px) rotate(45deg);
+}
+.theme-light .navbarBody .btn-open .bar1 {
+  transform: translate(0, 7.5px) rotate(-45deg);
+}
+.theme-light .navbarBody .btn-open .bar2 {
+  opacity: 0;
+}
+.theme-light .navbarBody .btn-open .bar3 {
+  transform: translate(0, -7.5px) rotate(45deg);
+}
+.theme-dark .navbarBody {
+  background: #1c1f22;
+  height: 80px;
+  position: sticky;
+  z-index: 20;
+}
+.theme-dark .navbarBody .logo .logoPrefix {
+  color: #0dada2;
+}
+.theme-dark .navbarBody .logo .logoSuffix {
+  color: #256f9d;
+}
+.theme-dark .navbarBody .navbarItems .navbarItem {
+  color: white;
+}
+.theme-dark .navbarBody .actions button {
+  color: white;
+}
+.theme-dark .navbarBody .profile .profileDetails .name {
+  color: white;
+}
+.theme-dark .navbarBody .profile .profileDetails .username {
+  color: #a6a7a9;
+}
+.theme-dark .navbarBody #toggleBtn .btn-open .bar1 {
+  transform: translate(0, 8.5px) rotate(-45deg);
+}
+.theme-dark .navbarBody #toggleBtn .btn-open .bar2 {
+  opacity: 0;
+}
+.theme-dark .navbarBody #toggleBtn .btn-open .bar3 {
+  transform: translate(0, -8.5px) rotate(45deg);
+}
+.theme-dark .navbarBody .btn-open .bar1 {
+  transform: translate(0, 7.5px) rotate(-45deg);
+}
+.theme-dark .navbarBody .btn-open .bar2 {
+  opacity: 0;
+}
+.theme-dark .navbarBody .btn-open .bar3 {
+  transform: translate(0, -7.5px) rotate(45deg);
+}
+
+.theme-light #navbarSmall {
+  background: #dfdfdf;
+  color: black;
+  transition: all 1s;
+  transform: translateY(0%);
+  opacity: 100;
+}
+.theme-light #navbarSmall .navbarItem:hover {
+  background-color: white;
+}
+.theme-dark #navbarSmall {
+  background: #262c31;
+  color: white;
+  transition: all 1s;
+  transform: translateY(0%);
+  opacity: 100;
+}
+.theme-dark #navbarSmall .navbarItem:hover {
+  background-color: #1c1f22;
+}
+
+#navbarSmall.hidden {
+  opacity: 0;
+  transform: translateY(-115%);
+  transition: all 1s;
+}
+
+#overlay {
+  background: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100vw;
+}/*# sourceMappingURL=navbar.css.map */

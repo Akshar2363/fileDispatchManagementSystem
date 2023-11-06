@@ -1,0 +1,12 @@
+@import 'index.scss';
+
+.signup{
+    .signup-card{
+        overflow: hidden;
+        .right{
+            background: linear-gradient( #3d5492e7,#10aea9b3);
+            // ,url('../images/bgImg2.jpg')
+            background-size: cover;
+        }
+    }
+}

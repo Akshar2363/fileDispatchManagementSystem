@@ -1,0 +1,93 @@
+$themes:(
+  light:(
+    textColor: black,
+    textColorSoft: rgb(34, 33, 33),
+    textColorContrast1: #0dada2,
+    textColorContrast2: #256f9d,
+    background: white,
+    backgroundSoft: #dfdfdf,
+    logo: darkblue,
+    logoSoft :#2e3e6a,
+    border: rgb(145, 144, 144),
+    borderSoft: rgb(66, 66, 66),
+
+  ),
+
+  dark:(
+    textColor: white,
+    textColorSoft: #a6a7a9,
+    textColorContrast1: #0dada2,
+    textColorContrast2: #256f9d,
+    background: #1c1f22,
+    backgroundSoft: #262c31,
+    logo: darkblue,
+    logoSoft :#2e3e6a,
+    border: #cccccc,
+    borderSoft: rgb(138, 138, 138),
+  )
+);
+
+
+@mixin themify($themes) {
+  @each $theme, $map in $themes {
+    .theme-#{$theme} & {
+      $theme-map: () !global;
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}");
+        $theme-map: map-merge(
+          $theme-map,
+          (
+            $key: $value,
+          )
+        ) !global;
+      }
+      @content;
+      $theme-map: null !global;
+    }
+  }
+}
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: none;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* Firefox */
+input[type=number] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+*{
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.body{
+  width: 100%;
+}

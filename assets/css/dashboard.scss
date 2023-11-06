@@ -1,0 +1,13 @@
+@import 'index.scss';
+
+
+.dashboardBody{
+    @include themify($themes){
+        height: calc(100vh - 80px);
+        background: themed("bgSoft");
+        .body{
+            width:100%;
+        }
+    }
+}
+

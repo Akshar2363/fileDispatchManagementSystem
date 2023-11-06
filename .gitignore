@@ -1,0 +1,32 @@
+# Ignore system and temporary files
+.DS_Store
+Thumbs.db
+*.swp
+
+# Ignore composer dependencies
+/vendor/
+
+# Ignore user-specific PHP settings
+php.ini
+
+# Ignore any logs or generated files
+error.log
+access.log
+
+# Ignore database configurations
+config/database.php
+
+# Ignore any sensitive or environment-specific files
+.env
+
+# Ignore session data
+session/*
+
+# Ignore any build or compiled files
+/build/
+
+# Ignore any user uploads or media files
+/userFolders/*
+
+# Ignore any cache directories
+/cache/

@@ -1,0 +1,12 @@
+@import 'index.scss';
+
+.login{
+    .login-card{
+        overflow: hidden;
+        .left{
+            background: linear-gradient( #3d5392d2,#044f4c5a);
+            // ,url('../images/bgImg1.jpg')
+            background-size: cover;
+        }
+    }
+}

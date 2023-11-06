@@ -1,0 +1,100 @@
+@import 'index.scss';
+
+.navbarBody {
+    @include themify($themes) {
+        background: themed("background");
+        height: 80px;
+        position: sticky;
+        z-index: 20;
+        .logo {
+            .logoPrefix {
+                color: themed("textColorContrast1")
+            }
+
+            .logoSuffix {
+                color: themed("textColorContrast2")
+            }
+        }
+
+        .navbarItems {
+            .navbarItem {
+                color: themed("textColor")
+            }
+        }
+
+        .actions {
+            button {
+
+                color: themed("textColor");
+            }
+        }
+
+        .profile {
+            .profileDetails {
+                .name {
+                    color: themed("textColor");
+                }
+
+                .username {
+                    color: themed("textColorSoft");
+                }
+            }
+        }
+
+        #toggleBtn {
+            .btn-open{
+                .bar1 {
+                    transform: translate(0, 8.5px) rotate(-45deg);
+                }
+                
+                .bar2 {
+                    opacity: 0;
+                }
+                
+                .bar3 {
+                    transform: translate(0, -8.5px) rotate(45deg);
+                }
+            }
+        }
+        .btn-open {
+            .bar1 {
+                transform: translate(0, 7.5px) rotate(-45deg);
+            }
+            
+            .bar2 {
+                opacity: 0;
+            }
+            
+            .bar3 {
+                transform: translate(0, -7.5px) rotate(45deg);
+            }
+        }
+
+
+    }
+
+}
+
+#navbarSmall {
+    @include themify($themes) {
+        background: themed("backgroundSoft");
+        color: themed("textColor");
+        transition : all 1s;
+        transform: translateY(0%);
+        opacity: 100;
+        .navbarItem:hover {
+            background-color: themed("background");
+        }
+    }
+}
+#navbarSmall.hidden {
+    opacity: 0;
+    transform: translateY(-115%);
+    transition : all 1s;
+}
+
+#overlay {
+    background: rgb(0 0 0 / 50%);
+    height: 100vh;
+    width: 100vw;
+}
