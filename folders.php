@@ -38,23 +38,21 @@ $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) != 0) {
 ?>
 
-<table>
+<table class="folderTable w-full">
 
-    <thead>
-        <th></th>
-        <th>Folder ID</th>
-        <th>Folder Name</th>
-        <th>Actions</th>
+    <thead class="p-2">
+        <th class="p-2"></th>
+        <th class="p-2">Folder Name</th>
+        <th class="p-2">Actions</th>
     </thead>
-    <tbody>
+    <tbody class="p-2">
         <?php
         foreach ($result as $folder) {
             ?>
-            <tr>
-                <td> <i class="fas fa-folder"></i> </td>
-                <td> <?php echo $folder['folderID'] ?></td>
-                <td> <button onclick="nextFolder(<?php echo $folder['folderID']; ?>, '<?php echo $folder['folderName']; ?>')"><?php echo $folder['folderName']; ?></button></td>
-                <td> <button onclick="deleteFolder(<?php echo $folder['folderID']; ?>, '<?php echo $folder['folderName']; ?>')"><i class="fas fa-trash"></i> </button></td>
+            <tr class="p-2">
+                <td class="p-2" > <i class="fas fa-folder text-yellow-600 text-lg"></i> </td>
+                <td class="p-2" ><button onclick="nextFolder(<?php echo $folder['folderID']; ?>, '<?php echo $folder['folderName']; ?>')"><?php echo $folder['folderName']; ?></button></td>
+                <td class="p-2" ><button onclick="deleteFolder(<?php echo $folder['folderID']; ?>, '<?php echo $folder['folderName']; ?>')"><i class="fas fa-trash text-red-500 text-lg"></i> </button></td>
             </tr>
         <?php
         }

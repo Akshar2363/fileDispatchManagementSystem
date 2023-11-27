@@ -12,6 +12,7 @@ include "includes/db.php";
     <script src="assets/js/tailwind.js"></script>
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/leftbar.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c97f0fb9ac.js" crossorigin="anonymous"></script>
 </head>
@@ -30,21 +31,92 @@ include "includes/db.php";
 
     }
     ?>
+    <?php
+    require "includes/navbar.php"
+    ?>
 
-    <div class="navbar w-full">
-        <?php
-        require "includes/navbar.php"
-        ?>
-    </div>
-
-    <div class="dashboardBody flex flex-row w-full">
-        <div class="leftbar">
+    <div class="body dashboardBody flex flex-col lg:flex-row w-full">
+        <div class="bodyContent w-full overflow-y-scroll p-2 flex flex-col gap-3">
             <?php
-            require "includes/leftbar.php"
+            $userID = $_SESSION['userID'];
+            $query = "  SELECT * FROM dispatch, user, files 
+                        WHERE ((dispatchTo='$userID' AND user.userID=dispatchBy) OR (dispatchBy='$userID' AND user.userID=dispatchTo)) AND dispatch.fileID=files.fileID 
+                        GROUP BY dispatchTimeStamp 
+                        ORDER BY dispatchTimestamp DESC
+                    ";
+
+            $result = mysqli_query($con, $query);
+
+            if (mysqli_num_rows($result) > 0) {
+                $groupedResults = array();
+
+                foreach ($result as $row) {
+                    $timestamp = strtotime($row['dispatchTimestamp']);
+                    $currentTime = time();
+                    $differenceInMinutes = round(($currentTime - $timestamp) / 60);
+
+                    // Determine the date format
+                    if (date("Y-m-d", $timestamp) == date("Y-m-d")) {
+                        $date = "Today";
+                    } elseif (date("Y-m-d", $timestamp) == date("Y-m-d", strtotime("-1 day"))) {
+                        $date = "Yesterday";
+                    } else {
+                        $date = date("jS F Y", $timestamp);
+                    }
+
+                    if (!isset($groupedResults[$date])) {
+                        $groupedResults[$date] = array();
+                    }
+
+                    // Convert minutes into hours, days, weeks, or years
+                    if ($differenceInMinutes < 60) {
+                        $timeAgo = $differenceInMinutes . " minutes ago";
+                    } elseif ($differenceInMinutes < 1440) {
+                        $timeAgo = round($differenceInMinutes / 60) . " hours ago";
+                    } elseif ($differenceInMinutes < 10080) {
+                        $timeAgo = round($differenceInMinutes / 1440) . " days ago";
+                    } elseif ($differenceInMinutes < 525600) {
+                        $timeAgo = round($differenceInMinutes / 10080) . " weeks ago";
+                    } else {
+                        $timeAgo = round($differenceInMinutes / 525600) . " years ago";
+                    }
+
+                    if ($row['dispatchTo'] == $_SESSION['userID']) {
+                        $groupedResults[$date][] = "<div class='receivedEntry px-4 flex flex-row items-center justify-between p-2 w-full'><div>Received file <span class='font-semibold'>{$row['fileName']}</span> from {$row['Name']}</div> <div>{$timeAgo}</div></div>";
+                    } else {
+                        $groupedResults[$date][] = "<div class='receivedEntry px-4 flex flex-row items-center justify-between p-2 w-full'><div>Sent file <span class='font-semibold'>{$row['fileName']}</span> to {$row['Name']}</div> <div>{$timeAgo}</div></div>";
+                    }
+                }
             ?>
-        </div>
-        <div class="bodyContent body">
-            Create Endpoint to show all dispatches where dispatchTo = Session userID; sort by timestamp DESC
+
+                    <?php
+                    foreach ($groupedResults as $date => $entries) {
+                    ?>
+                        <div class="receivedDayEntry">
+
+                            <div class="receivedDate p-2 font-semibold hover:underline w-fit"><?php echo $date ?></div>
+                            <?php
+                        foreach ($entries as $entry) {
+                            echo $entry;
+                        }
+                        ?>
+                        </div>
+                        <?php
+                    }
+                    ?>
+
+
+            <?php
+
+            } else {
+            ?>
+                <div>Empty History</div>
+            <?php
+            }
+            ?>
+
+
+
         </div>
     </div>
 

@@ -17,6 +17,7 @@ include "includes/db.php";
     <script src="https://kit.fontawesome.com/c97f0fb9ac.js" crossorigin="anonymous"></script>
 </head>
 
+
 <body id='theme' class="theme-dark flex min-h-[100vh] flex-col">
 
 
@@ -38,18 +39,18 @@ include "includes/db.php";
         ?>
     </div>
 
-    <div class="dashboardBody flex flex-col lg:flex-row w-full">
-        <div class="leftbar">
+    <div class="body dashboardBody flex flex-col lg:flex-row w-full">
             <?php
             require "includes/leftbar.php"
             ?>
-        </div>
-        <div class="bodyContent w-full overflow-y-scroll">
-            <div class="currentPath">
-                <?php echo $_SESSION['currentPath'] ?>
+        <div class="bodyContent w-full overflow-y-scroll p-2 flex flex-col gap-3">
+            <div class="navigation flex flex-row items-center justify-start gap-2 border-b ">
+                <button class="backBtn rounded-lg" <?php echo $_SESSION['currentFolderIndex'] == 0 ? 'disabled' : ''; ?> onclick="prevFolder()"><i class="fa fa-angle-left text-3xl px-2"></i></button>
+                <div class="currentPath text-lg w-full p-4">
+                    <?php echo $_SESSION['currentPath'] ?>
+                </div>
             </div>
-            <button class="bg-red-500 " <?php echo $_SESSION['currentFolderIndex'] == 0 ? 'disabled' : ''; ?> onclick="prevFolder()">Go Back</button>
-            <div class="grid grid-cols-2 w-full gap-4">
+            <div class="filesAndFolders grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
                 <div class="folders text-center ">
                     <?php include "folders.php"; ?>
                 </div>

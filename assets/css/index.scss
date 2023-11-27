@@ -1,6 +1,5 @@
-$themes:(
-  light:(
-    textColor: black,
+$themes: (
+  light:(textColor: black,
     textColorSoft: rgb(34, 33, 33),
     textColorContrast1: #0dada2,
     textColorContrast2: #256f9d,
@@ -13,8 +12,7 @@ $themes:(
 
   ),
 
-  dark:(
-    textColor: white,
+  dark:(textColor: white,
     textColorSoft: #a6a7a9,
     textColorContrast1: #0dada2,
     textColorContrast2: #256f9d,
@@ -31,29 +29,31 @@ $themes:(
 @mixin themify($themes) {
   @each $theme, $map in $themes {
     .theme-#{$theme} & {
-      $theme-map: () !global;
-      @each $key, $submap in $map {
-        $value: map-get(map-get($themes, $theme), "#{$key}");
-        $theme-map: map-merge(
-          $theme-map,
-          (
-            $key: $value,
-          )
+      $theme-map: (
         ) !global;
-      }
-      @content;
-      $theme-map: null !global;
+
+      @each $key, $submap in $map {
+        $value: map-get(map-get($themes, $theme), "#{$key}"
+        );
+      $theme-map: map-merge($theme-map,
+          ($key: $value,
+          )) !global;
     }
+
+    @content;
+    $theme-map: null !global;
   }
+}
 }
 
 @function themed($key) {
   @return map-get($theme-map, $key);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
@@ -66,6 +66,7 @@ select:-webkit-autofill:focus {
   -webkit-box-shadow: none;
   transition: background-color 5000s ease-in-out 0s;
 }
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -78,16 +79,31 @@ input[type=number] {
   appearance: textfield;
   -moz-appearance: textfield;
 }
+
 *::-webkit-scrollbar {
   display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
-*{
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+* {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-.body{
+.body {
   width: 100%;
+
+  @include themify($themes) {
+    .homeTop{
+      background: #0a0a0a;
+      color: white;
+    }
+    .homeSection {
+      background: themed('background');
+      min-height: calc(100vh - 80px);
+      color: themed('textColor');
+    }
+  }
 }

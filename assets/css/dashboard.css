@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -33,23 +34,95 @@ input[type=number] {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 * {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .body {
   width: 100%;
 }
+.theme-light .body .homeSection {
+  background: white;
+  min-height: calc(100vh - 80px);
+}
+.theme-dark .body .homeSection {
+  background: #1c1f22;
+  min-height: calc(100vh - 80px);
+}
 
 .theme-light .dashboardBody {
   height: calc(100vh - 80px);
+  background: white;
+  color: black;
 }
-.theme-light .dashboardBody .body {
-  width: 100%;
+.theme-light .dashboardBody .bodyContent .navigation {
+  border-color: rgb(66, 66, 66);
+}
+.theme-light .dashboardBody .bodyContent .navigation .backBtn {
+  background: #dfdfdf;
+}
+.theme-light .dashboardBody .bodyContent .navigation .backBtn:hover {
+  background: black;
+  color: white;
+}
+.theme-light .dashboardBody .bodyContent .fileTable {
+  background: #dfdfdf;
+}
+.theme-light .dashboardBody .bodyContent .fileTable thead {
+  background: rgb(34, 33, 33);
+  color: white;
+}
+.theme-light .dashboardBody .bodyContent .fileTable tbody tr:hover {
+  background: black;
+  color: white;
+}
+.theme-light .dashboardBody .bodyContent .folderTable {
+  background: #dfdfdf;
+}
+.theme-light .dashboardBody .bodyContent .folderTable thead {
+  background: rgb(34, 33, 33);
+  color: white;
+}
+.theme-light .dashboardBody .bodyContent .folderTable tbody tr:hover {
+  background: black;
+  color: white;
 }
 .theme-dark .dashboardBody {
   height: calc(100vh - 80px);
+  background: #1c1f22;
+  color: white;
 }
-.theme-dark .dashboardBody .body {
-  width: 100%;
+.theme-dark .dashboardBody .bodyContent .navigation {
+  border-color: rgb(138, 138, 138);
+}
+.theme-dark .dashboardBody .bodyContent .navigation .backBtn {
+  background: #262c31;
+}
+.theme-dark .dashboardBody .bodyContent .navigation .backBtn:hover {
+  background: white;
+  color: #1c1f22;
+}
+.theme-dark .dashboardBody .bodyContent .fileTable {
+  background: #262c31;
+}
+.theme-dark .dashboardBody .bodyContent .fileTable thead {
+  background: #a6a7a9;
+  color: #1c1f22;
+}
+.theme-dark .dashboardBody .bodyContent .fileTable tbody tr:hover {
+  background: white;
+  color: #1c1f22;
+}
+.theme-dark .dashboardBody .bodyContent .folderTable {
+  background: #262c31;
+}
+.theme-dark .dashboardBody .bodyContent .folderTable thead {
+  background: #a6a7a9;
+  color: #1c1f22;
+}
+.theme-dark .dashboardBody .bodyContent .folderTable tbody tr:hover {
+  background: white;
+  color: #1c1f22;
 }/*# sourceMappingURL=dashboard.css.map */

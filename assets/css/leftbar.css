@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -33,14 +34,52 @@ input[type=number] {
 
 /* Hide scrollbar for IE, Edge and Firefox */
 * {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .body {
   width: 100%;
 }
+.theme-light .body .homeSection {
+  background: white;
+  min-height: calc(100vh - 80px);
+}
+.theme-dark .body .homeSection {
+  background: #1c1f22;
+  min-height: calc(100vh - 80px);
+}
 
-.leftbar {
-  height: calc(100vh - 80px);
+.theme-light .leftbar {
+  background: #dfdfdf;
+}
+.theme-light .leftbar .leftBarSection {
+  color: black;
+}
+.theme-light .leftbar .leftBarSection .leftbarHeader {
+  color: rgb(34, 33, 33);
+}
+.theme-light .leftbar .leftBarSection .leftbarItem:hover {
+  background: white;
+}
+.theme-dark .leftbar {
+  background: #262c31;
+}
+.theme-dark .leftbar .leftBarSection {
+  color: white;
+}
+.theme-dark .leftbar .leftBarSection .leftbarHeader {
+  color: #a6a7a9;
+}
+.theme-dark .leftbar .leftBarSection .leftbarItem:hover {
+  background: #1c1f22;
+}
+
+@media screen and (max-width: 1024px) {
+  .leftbar {
+    height: -moz-fit-content;
+    height: fit-content;
+  }
 }/*# sourceMappingURL=leftbar.css.map */

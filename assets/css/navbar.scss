@@ -82,6 +82,7 @@
         transition : all 1s;
         transform: translateY(0%);
         opacity: 100;
+        border-color: themed('borderSoft');
         .navbarItem:hover {
             background-color: themed("background");
         }

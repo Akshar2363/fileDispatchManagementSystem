@@ -1,0 +1,28 @@
+@import 'index.scss';
+
+
+.dashboardBody{
+
+    @include themify($themes) {
+        .bodyContent {
+            .receivedFiles {
+                .receivedFileTable {
+                    background: themed('backgroundSoft');
+
+                    thead {
+                        background: themed('textColorSoft');
+                        color: themed('background');
+                    }
+
+                    tbody {
+                        tr:hover {
+                            background: themed('textColor');
+                            color: themed("background");
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+}

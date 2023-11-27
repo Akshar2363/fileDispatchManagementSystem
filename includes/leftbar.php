@@ -1,46 +1,115 @@
 <script>
+    function addFolder() {
+        let folderName = prompt('Folder Name');
+        if (folderName != null) {
+            $.ajax({
+                type: 'GET',
+                url: `ajaxCalls/addFolder.php?folderName=${folderName}`,
+                success: function(response) {
+                    alert(response);
+                    location.reload();
+                }
+            });
+        }
+    }
 
-function addFolder(){
-    let folderName = prompt('Folder Name');
-    if(folderName!=null){
+    function addFile() {
+        const formData = new FormData(document.getElementById("fileUploadForm"));
         $.ajax({
-            type: 'GET',
-            url: `ajaxCalls/addFolder.php?folderName=${folderName}`,
+            type: 'POST',
+            url: 'ajaxCalls/addFile.php',
+            data: formData,
+            processData: false,
+            contentType: false,
             success: function(response) {
                 alert(response);
                 location.reload();
             }
         });
     }
-}
-function addFile() {
-    const formData = new FormData(document.getElementById("fileUploadForm"));
-    
-    $.ajax({
-        type: 'POST',
-        url: 'ajaxCalls/addFile.php',
-        data: formData,
-        processData: false, 
-        contentType: false, 
-        success: function(response) {
-            alert(response);
-            location.reload();
-        }
-    });
-}
 
+    function toggleFileUploadModal() {
+        // const closeBtn = document.getElementById('fileUploadModalCloseBtn');
+        const overlay = document.getElementById('fileUploadOverlay');
+        const modal = document.getElementById('fileUploadModal');
+
+        overlay.classList.toggle('hidden');
+        modal.classList.toggle('hidden');
+    }
+
+
+
+    function displayFileName() {
+        const fileInput = document.getElementById('dropzone-file');
+        const fileNameParagraph = document.getElementById('fileUploadName');
+        if (fileInput.files.length > 0) {
+            fileNameParagraph.textContent = "Selected file: " + fileInput.files[0].name;
+        } else {
+            fileNameParagraph.textContent = "";
+        }
+    }
+
+    function handleFileDrop(event) {
+        event.preventDefault();
+        const fileInput = document.getElementById('dropzone-file');
+        fileInput.files = event.dataTransfer.files;
+        displayFileName();
+    }
+
+    function handleDragOver(event) {
+        event.preventDefault();
+    }
 </script>
 
-<div class="leftbar sticky w-full h-fit lg:h-full flex flex-col bg-gray-800 text-white">
-    <a class="p-4 hover:bg-gray-400 " href="dashboard.php">Dashboard</a>
-    <div onclick="addFolder()" class="createFolder hover:bg-gray-400 flex flex-row gap-3">
-        <p >Create Folder</p>
+<div class="leftbar w-full sticky lg:w-[15%] h-fit lg:h-full border-b lg:border-r lg:border-b-0 h-fit ">
+    <div class="leftBarSection flex flex-col gap-3 text-white">
+
+        <p class="leftbarHeader p-4 text-lg ">GENERAL</p>
+        <a class="leftbarItem p-4 text-lg flex flex-row items-center justify-start gap-2" href="dashboard.php"><i class="fa fa-home text-lg"></i>
+            <p>Dashboard</p>
+        </a>
+        <button class="leftbarItem p-4 text-lg flex flex-row items-center justify-start gap-2" onclick="addFolder()"><i class="fa-solid fa-folder-plus text-lg"></i>
+            <p>Create Folder</p>
+        </button>
+        <button class="leftbarItem uploadFile p-4 text-lg flex flex-row items-center justify-start gap-2" onclick="toggleFileUploadModal()"><i class="fa-solid fa-file-arrow-up text-lg"></i>
+            <p>Upload File</p>
+        </button>
     </div>
-    <div class="uploadFile hover:bg-gray-400 ">
-        <p>Upload File</p>
-        <form id="fileUploadForm" class="p-4 flex flex-row gap-3" enctype="multipart/form-data">
-            <input type="file" name='fileupload' id='fileupload' class="text-white" placeholder="Upload File" class="text-black p-2">
-        </form>
-        <button onclick="addFile()">Submit</button>
+</div>
+
+
+
+<div id="fileUploadModal" class="hidden absolute flex items-center justify-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div id="fileUploadOverlay" class="hidden fixed top-0 left-0 h-full w-full bg-[#00000080] z-30 h-[100vh] w-[100vw]" onclick="toggleFileUploadModal()"></div>
+    <div class="relative w-full max-w-md max-h-full z-40">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" id="fileUploadModalCloseBtn" onclick="toggleFileUploadModal()" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="authentication-modal">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            <div class="px-6 py-6 lg:px-8">
+                <h3 class="mb-4 text-lg font-medium text-gray-900 dark:text-white">Upload your file</h3>
+                <div class="uploadForm flex flex-col items-center justify-center gap-3">
+
+                    <form class="flex items-center justify-center w-full" id='fileUploadForm'>
+                        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover-bg-gray-100 dark:border-gray-600 dark:hover-border-gray-500 dark:hover-bg-gray-600" ondrop="handleFileDrop(event)" ondragover="handleDragOver(event)">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <svg class="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                </svg>
+                                <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs text-gray-500 dark:text-gray-400" id='fileUploadName' name="fileUploadName"></p>
+                            </div>
+                            <input id="dropzone-file" type="file" class="hidden" id='fileupload' name='fileupload' onchange="displayFileName()" />
+                        </label>
+                    </form>
+                    <button onclick="addFile()" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+
+                </div>
+            </div>
+        </div>
     </div>
 </div>

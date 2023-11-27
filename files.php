@@ -38,24 +38,24 @@ $sql = "SELECT * FROM files WHERE userID='$userID' and folderID='$folderID'";
 $result = mysqli_query($con, $sql);
 if (mysqli_num_rows($result) != 0) {
 ?>
-    <table>
-        <thead>
-            <th>File ID</th>
-            <th>File Name</th>
-            <th>File Type</th>
-            <th colspan="3">Actions</th>
+    <table class="fileTable w-full">
+        <thead class="p-2 ">
+            <th class="p-2"></th>
+            <th class="p-2">File Name</th>
+            <th class="p-2">File Type</th>
+            <th class="p-2" colspan="3">Actions</th>
         </thead>
-        <tbody>
+        <tbody class="p-2">
             <?php
             foreach ($result as $file) {
             ?>
-                <tr>
-                    <td> <?php echo $file['fileID']; ?></td>
-                    <td> <?php echo $file['fileName']; ?></td>
-                    <td> <?php echo $file['fileType']; ?></td>
-                    <td><button onclick="deleteFile('<?php echo $file['fileID']; ?>', '<?php echo $file['fileName']; ?>')"><i class="fas fa-trash"></i></button></td>
-                    <td> <a href="<?php echo 'userFolders/'.$_SESSION['currentPath'].'/'.$file['fileName'] ?>" download><i class="fas fa-download"></i></a> </td>
-                    <td><button onclick="sendFile('<?php echo $file['fileID'] ?>')"><i class="fas fa-share"></i></button></td>
+                <tr class="p-2">
+                    <td class="p-2"><i class="fa fa-file text-sky-400 text-lg"></i></td>
+                    <td class="p-2"> <?php echo $file['fileName']; ?></td>
+                    <td class="p-2"> <?php echo $file['fileType']; ?></td>
+                    <td class="p-2"><button onclick="deleteFile('<?php echo $file['fileID']; ?>', '<?php echo $file['fileName']; ?>')"><i class="fas fa-trash text-red-500 text-lg"></i></button></td>
+                    <td class="p-2"> <a href="<?php echo 'userFolders/'.$_SESSION['currentPath'].'/'.$file['fileName'] ?>" download><i class="fas fa-download text-orange-600 text-lg"></i></a> </td>
+                    <td class="p-2"><button onclick="sendFile('<?php echo $file['fileID'] ?>')"><i class="fas fa-share text-green-500 text-lg"></i></button></td>
                 </tr>
             <?php
             }

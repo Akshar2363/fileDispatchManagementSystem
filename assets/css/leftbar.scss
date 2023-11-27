@@ -1,5 +1,23 @@
 @import 'index.scss';
 
 .leftbar{
-    height: calc(100vh - 80px);
+    @include themify($themes){
+        background: themed("backgroundSoft");
+        border-color: themed('borderColor');
+        .leftBarSection{
+            color: themed("textColor");
+            .leftbarHeader{
+                color: themed("textColorSoft");
+            }
+            .leftbarItem:hover{
+                background:themed('background');
+            }
+        }
+       
+    }
 }
+@media screen and (max-width:1024px) {
+    .leftbar{
+        height: fit-content;
+    }
+} 

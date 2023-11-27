@@ -1,13 +1,50 @@
 @import 'index.scss';
 
 
-.dashboardBody{
-    @include themify($themes){
+.dashboardBody {
+    @include themify($themes) {
         height: calc(100vh - 80px);
-        background: themed("bgSoft");
-        .body{
-            width:100%;
+        background: themed("background");
+        color: themed("textColor");
+        .bodyContent{
+            .navigation{
+                border-color: themed('borderSoft');
+                .backBtn{
+                    background: themed('backgroundSoft');
+                }
+                .backBtn:hover{
+                    background: themed('textColor');
+                    color: themed("background");
+                }
+               
+            }
+        .fileTable{
+            background: themed('backgroundSoft');
+            thead{
+                background: themed('textColorSoft');
+                color: themed('background');
+            }
+            tbody{
+                tr:hover{
+                    background: themed('textColor');
+                    color: themed("background");
+                }
+            }
+        }
+        .folderTable{
+            background: themed('backgroundSoft');
+            thead{
+                background: themed('textColorSoft');
+                color: themed('background');
+            }
+            tbody{
+                tr:hover{
+                    background: themed('textColor');
+                    color: themed("background");
+                }
+            }
         }
     }
+        
+    }
 }
-
