@@ -39,9 +39,6 @@ include "includes/db.php";
     </div>
 
     <div class="body dashboardBody flex flex-col lg:flex-row w-full">
-            <?php
-            require "includes/leftbar.php"
-            ?>
         <div class="bodyContent w-full overflow-y-scroll p-2 flex flex-col gap-3">
                 <div class="receivedFiles text-center ">
                     <?php include "getReceivedFiles.php"; ?>

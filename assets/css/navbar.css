@@ -43,13 +43,23 @@ input[type=number] {
 .body {
   width: 100%;
 }
+.theme-light .body .homeTop {
+  background: #0a0a0a;
+  color: white;
+}
 .theme-light .body .homeSection {
   background: white;
   min-height: calc(100vh - 80px);
+  color: black;
+}
+.theme-dark .body .homeTop {
+  background: #0a0a0a;
+  color: white;
 }
 .theme-dark .body .homeSection {
   background: #1c1f22;
   min-height: calc(100vh - 80px);
+  color: white;
 }
 
 .theme-light .navbarBody {

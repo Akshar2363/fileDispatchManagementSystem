@@ -42,7 +42,7 @@ if (mysqli_num_rows($result) != 0) {
 
     <thead class="p-2">
         <th class="p-2"></th>
-        <th class="p-2">Folder Name</th>
+        <th class="p-2 overflow-x-scroll">Folder Name</th>
         <th class="p-2">Actions</th>
     </thead>
     <tbody class="p-2">

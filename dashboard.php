@@ -46,7 +46,7 @@ include "includes/db.php";
         <div class="bodyContent w-full overflow-y-scroll p-2 flex flex-col gap-3">
             <div class="navigation flex flex-row items-center justify-start gap-2 border-b ">
                 <button class="backBtn rounded-lg" <?php echo $_SESSION['currentFolderIndex'] == 0 ? 'disabled' : ''; ?> onclick="prevFolder()"><i class="fa fa-angle-left text-3xl px-2"></i></button>
-                <div class="currentPath text-lg w-full p-4">
+                <div class="currentPath text-lg w-full p-4 overflow-x-scroll">
                     <?php echo $_SESSION['currentPath'] ?>
                 </div>
             </div>

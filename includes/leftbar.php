@@ -64,14 +64,18 @@
 <div class="leftbar w-full sticky lg:w-[15%] h-fit lg:h-full border-b lg:border-r lg:border-b-0 h-fit ">
     <div class="leftBarSection flex flex-col gap-3 text-white">
 
-        <p class="leftbarHeader p-4 text-lg ">GENERAL</p>
-        <a class="leftbarItem p-4 text-lg flex flex-row items-center justify-start gap-2" href="dashboard.php"><i class="fa fa-home text-lg"></i>
+        <p class="leftbarHeader py-1 px-4 lg:p-4 text-lg ">GENERAL</p>
+        <a class="leftbarItem py-1 px-4 lg:p-4 text-lg flex flex-row items-center justify-start gap-2" href="dashboard.php"><i class="fa fa-home text-lg"></i>
             <p>Dashboard</p>
         </a>
-        <button class="leftbarItem p-4 text-lg flex flex-row items-center justify-start gap-2" onclick="addFolder()"><i class="fa-solid fa-folder-plus text-lg"></i>
+        <a class="leftbarItem py-1 px-4 lg:p-4 text-lg flex flex-row items-center justify-start gap-2" href="friends.php"><i class="fa fa-users text-lg"></i>
+            <p>Friends</p>
+        </a>
+        <p class="leftbarHeader py-1 px-4 lg:p-4 text-lg ">ACTIONS</p>
+        <button class="leftbarItem py-1 px-4 lg:p-4 text-lg flex flex-row items-center justify-start gap-2" onclick="addFolder()"><i class="fa-solid fa-folder-plus text-lg"></i>
             <p>Create Folder</p>
         </button>
-        <button class="leftbarItem uploadFile p-4 text-lg flex flex-row items-center justify-start gap-2" onclick="toggleFileUploadModal()"><i class="fa-solid fa-file-arrow-up text-lg"></i>
+        <button class="leftbarItem uploadFile py-1 px-4 lg:p-4 text-lg flex flex-row items-center justify-start gap-2" onclick="toggleFileUploadModal()"><i class="fa-solid fa-file-arrow-up text-lg"></i>
             <p>Upload File</p>
         </button>
     </div>
@@ -79,7 +83,7 @@
 
 
 
-<div id="fileUploadModal" class="hidden absolute flex items-center justify-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div id="fileUploadModal" class="hidden absolute top-0 left-0 flex items-center justify-center w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div id="fileUploadOverlay" class="hidden fixed top-0 left-0 h-full w-full bg-[#00000080] z-30 h-[100vh] w-[100vw]" onclick="toggleFileUploadModal()"></div>
     <div class="relative w-full max-w-md max-h-full z-40">
         <!-- Modal content -->

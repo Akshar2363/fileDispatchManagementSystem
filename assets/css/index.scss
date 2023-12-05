@@ -1,3 +1,4 @@
+$theme-map: null; 
 $themes: (
   light:(textColor: black,
     textColorSoft: rgb(34, 33, 33),
@@ -94,11 +95,41 @@ input[type=number] {
 
 .body {
   width: 100%;
-
+  height: calc(100vh - 80px);
+  background: #0a0a0a;
   @include themify($themes) {
     .homeTop{
-      background: #0a0a0a;
       color: white;
+      .right{
+        .outer, .inner{
+          img{
+            animation: rotateRight 25s linear infinite; 
+            transform-origin: center; 
+            @keyframes rotateRight {
+              from {
+                transform: rotate(0deg);
+              }
+              to {
+                transform: rotate(360deg);
+              }
+            }
+          }
+        }
+        .middle{
+          img{
+            animation: rotateLeft 25s linear infinite; 
+            transform-origin: center; 
+            @keyframes rotateLeft {
+              from {
+                transform: rotate(0deg);
+              }
+              to {
+                transform: rotate(-360deg);
+              }
+            }
+          }
+        }
+      }
     }
     .homeSection {
       background: themed('background');

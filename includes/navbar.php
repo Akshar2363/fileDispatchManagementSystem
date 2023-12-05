@@ -46,7 +46,7 @@ if (isset($_SESSION['userName'])) {
     </div>
     <div class="actions flex flex-row items-center gap-6">
       <button><i class="fa-solid fa-bell text-2xl"></i></button>
-      <button onclick="toggleTheme()" id='themeButton'><i class="fa-solid fa-moon text-2xl"></i></button>
+      <!-- <button onclick="toggleTheme()" id='themeButton'><i class="fa-solid fa-moon text-2xl"></i></button> -->
     </div>
     <div class="profile hidden lg:flex flex-row items-center gap-3">
       <img src="assets/icons/profile.png" class="w-[48px]" alt="">
@@ -108,8 +108,8 @@ if (isset($_SESSION['userName'])) {
       <a href="signup.php" class="navbarItem">Sign Up</a>
     </div>
     <div class="actions flex flex-row items-center gap-6">
-      <button><i class="fa-solid fa-bell text-2xl"></i></button>
-      <button onclick="toggleTheme()" id='themeButton'><i class="fa-solid fa-moon text-2xl"></i></button>
+      <!-- <button><i class="fa-solid fa-bell text-2xl"></i></button> -->
+      <!-- <button onclick="toggleTheme()" id='themeButton'><i class="fa-solid fa-moon text-2xl"></i></button> -->
     </div>
     <div id="toggleBtn" class="lg:hidden  flex flex-col gap-1" onclick='toggleMenu()'>
       <button class="bar1 w-[32px] bg-red-500 h-[4px] rounded-xl"></button>

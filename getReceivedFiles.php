@@ -33,25 +33,7 @@ function deleteFile(dispatchID, fileID) {
         });
     }
 }
-function sendFile(fileID){
-    let receiver = prompt('Enter username of receiver : ');
-    if(receiver!=null){
-        location.href=`endpoints/shareFile.php?fileID=${fileID}&receiver=${receiver}`
-    }
-}
-function sendFile(fileID){
-    let receiver = prompt('Enter username of receiver : ');
-    if(receiver!=null){
-        $.ajax({
-            type: 'GET',
-            url: `ajaxCalls/shareFile.php?fileID=${fileID}&receiver=${receiver}`,
-            success: function(response) {
-                alert(response);
-                location.reload();
-            }
-        });
-    }
-}
+
 
 function downloadFile(filePath){
     $.ajax({
@@ -157,3 +139,4 @@ if (isset($_SESSION['userName'])) {
 }
 
 ?>
+
