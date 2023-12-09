@@ -38,7 +38,6 @@ include_once 'includes/db.php';
               <input class="p-2 my-1 w-full sm:w-[50%] sm:mr-l text-black border-b-2" type="password" name="confirm_password" id="confirm_password" placeholder='Confirm Password' />
             </div>
             <input class="p-2 my-1 text-black border-b-2" type="number" name="contact" id="contact" placeholder='Contact' />
-            <input class="p-2 my-1 text-black border-b-2" type="text" name="department" id="department" placeholder='Department' />
             <button name="submit" type="submit" class='my-2 w-[100px] py-1 md:py-2 border border-black bg-[#0daca3] text-[#2e3e6a] rounded-lg  hover:bg-[#2e3e6a] hover:text-white'>Sign Up</button>
           </form>
         </div>

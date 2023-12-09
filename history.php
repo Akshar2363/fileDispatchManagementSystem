@@ -36,7 +36,10 @@ include "includes/db.php";
     ?>
 
     <div class="body dashboardBody flex flex-col lg:flex-row w-full">
-        <div class="bodyContent w-full overflow-y-scroll p-2 flex flex-col gap-3">
+    <?php
+        require "includes/leftbar.php"
+        ?>
+        <div class="bodyContent w-full h-full overflow-y-scroll p-2 flex flex-col gap-3">
             <?php
             $userID = $_SESSION['userID'];
             $query = "  SELECT * FROM dispatch, user, files 
@@ -51,7 +54,7 @@ include "includes/db.php";
                 $groupedResults = array();
 
                 foreach ($result as $row) {
-                    $timestamp = strtotime($row['dispatchTimestamp']);
+                    $timestamp = strtotime($row['dispatchTimestamp'])-16200;
                     $currentTime = time();
                     $differenceInMinutes = round(($currentTime - $timestamp) / 60);
 
@@ -69,7 +72,10 @@ include "includes/db.php";
                     }
 
                     // Convert minutes into hours, days, weeks, or years
-                    if ($differenceInMinutes < 60) {
+                    if ($differenceInMinutes <= 0) {
+                        $timeAgo = "now";
+                    }
+                    else if ($differenceInMinutes < 60) {
                         $timeAgo = $differenceInMinutes . " minutes ago";
                     } elseif ($differenceInMinutes < 1440) {
                         $timeAgo = round($differenceInMinutes / 60) . " hours ago";
@@ -92,9 +98,12 @@ include "includes/db.php";
                     <?php
                     foreach ($groupedResults as $date => $entries) {
                     ?>
-                        <div class="receivedDayEntry">
+                        <div class="receivedDayEntry flex flex-col">
+                            <div class="flex flex-row items-center">
 
-                            <div class="receivedDate p-2 font-semibold hover:underline w-fit"><?php echo $date ?></div>
+                                <i class="fa fa-calendar"></i>
+                                <div class="receivedDate p-2 font-semibold hover:underline w-fit"><?php echo $date ?></div>
+                            </div>
                             <?php
                         foreach ($entries as $entry) {
                             echo $entry;
@@ -110,7 +119,10 @@ include "includes/db.php";
 
             } else {
             ?>
-                <div>Empty History</div>
+                <div class="w-full h-full flex items-center justify-center flex-col gap-8">
+                    <div class="text-center text-xl md:text-2xl lg:text-4xl ">No History of File Shares</div>
+                    <i class="fa fa-history text-gray-200 text-9xl opacity-5" ></i>
+                </div>
             <?php
             }
             ?>

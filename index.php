@@ -31,6 +31,7 @@ include "includes/db.php"
                     <div class="text-xl lg:text-2xl font-semibold font-mono mt-2">
                         Share files with ease ...
                     </div>
+                    <div class="fileDispatchTitle text-white text-center text-lg lg:text-2xl mt-5">File Dispatch Management System - <span class="text-base font-semibold text-gray-500"> @anmol</span></div>
                 </div>
             </div>
             <div class="right top-[50px] md:top-0 h-[400px] md:h-[600px] z-10 w-full overflow-hidden">
@@ -43,13 +44,12 @@ include "includes/db.php"
                         </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
 
-
     </div>
 </body>
-
+<?php
+        require "includes/footer.php"
+        ?>
 </html>

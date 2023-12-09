@@ -26,14 +26,12 @@ if(isset($_POST['submit'])){
         $_SESSION['Name'] = $row["Name"];
         $_SESSION["emailID"] = $row["emailID"];
         $_SESSION["password"] = $row["password"];
-        $_SESSION["department"] = $row["department"];
         $_SESSION["contactNo"] = $row["contactNo"];
         $folderName = $_SESSION["userID"] . $_SESSION["userName"] . $_SESSION["contactNo"];
         $_SESSION["currentPath"] = $folderName;
         $_SESSION["folders"][0] = $row['folderID'];
         $_SESSION["currentFolderIndex"] = 0;
         $_SESSION["rootFolderID"] = $row['folderID'];
-
         ?>
             <script>
                 alert("You have logged in successfully!!");

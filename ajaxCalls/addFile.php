@@ -6,7 +6,6 @@ if (isset($_FILES['fileupload'])) {
     $statusMsg = '';
     $userID = $_SESSION['userID'];
     $folderID = $_SESSION['folders'][$_SESSION['currentFolderIndex']];
-    $department = $_SESSION['department'];
     $targetDir = '../userFolders/' . $_SESSION['currentPath'];
     $fileName = basename($_FILES["fileupload"]["name"]);
     $targetFilePath = $targetDir . '/' . $fileName;
@@ -26,9 +25,9 @@ if (isset($_FILES['fileupload'])) {
                 $statusMsg = "Sorry, there was an error uploading your file.";
             } else {
                 $filePath = 'userFolders/' . $_SESSION['currentPath'].'/'.$fileName;
-                $query = "INSERT INTO files (fileName, fileType, filePath, department, userID, folderID) VALUES (?, ?, ?, ?, ?, ?)";
+                $query = "INSERT INTO files (fileName, fileType, filePath, userID, folderID) VALUES (?,?, ?, ?, ?)";
                 $stmt = mysqli_prepare($con, $query);
-                mysqli_stmt_bind_param($stmt, "ssssss", $fileName, $fileType,  $filePath, $department, $userID, $folderID);
+                mysqli_stmt_bind_param($stmt, "sssss", $fileName, $fileType,  $filePath, $userID, $folderID);
                 mysqli_stmt_execute($stmt);
                 $affected_rows = mysqli_stmt_affected_rows($stmt);
                 if ($affected_rows == 1) {

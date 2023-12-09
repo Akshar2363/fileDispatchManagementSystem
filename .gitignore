@@ -27,6 +27,11 @@ session/*
 
 # Ignore any user uploads or media files
 /userFolders/*
+/documents/*
+documents.zip
+snapshots.zip
+/snapshots
+
 
 # Ignore any cache directories
 /cache/

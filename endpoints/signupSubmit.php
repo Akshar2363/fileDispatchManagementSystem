@@ -8,7 +8,6 @@ if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($con, $_POST['username']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = md5(mysqli_real_escape_string($con, $_POST['password']));
-    $dept = mysqli_real_escape_string($con, $_POST['department']);
     $phone = mysqli_real_escape_string($con, $_POST['contact']);
 
     mysqli_autocommit($con, false); // Turn off autocommit to start a transaction
@@ -17,9 +16,9 @@ if (isset($_POST['submit'])) {
     $result = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($result) == 0) {
-        $query = "INSERT INTO user (userName, Name, emailID, password, department, contactNo) VALUES (?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO user (userName, Name, emailID, password, contactNo) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $password, $dept, $phone);
+        mysqli_stmt_bind_param($stmt, "sssss", $username, $name, $email, $password, $phone);
         $insertUserSuccess = mysqli_stmt_execute($stmt);
 
         if ($insertUserSuccess) {
@@ -33,7 +32,6 @@ if (isset($_POST['submit'])) {
             $_SESSION['Name'] = $row["Name"];
             $_SESSION["emailID"] = $row["emailID"];
             $_SESSION["password"] = $row["password"];
-            $_SESSION["department"] = $row["department"];
             $_SESSION["contactNo"] = $row["contactNo"];
             
             $folderName = $_SESSION["userID"] . $_SESSION['userName'] . $_SESSION['contactNo'];
@@ -42,9 +40,9 @@ if (isset($_POST['submit'])) {
             if (mkdir("../userFolders/" . $folderName)) {
                 
                 if(mkdir("../userFolders/" . $folderName . '/' . 'Received')){
-                    $query = "INSERT INTO folders (folderName, folderDept, parentID, userID) VALUES (?, ?, ?, ?)";
+                    $query = "INSERT INTO folders (folderName, parentID, userID) VALUES (?, ?, ?)";
                     $stmt = mysqli_prepare($con, $query);
-                    mysqli_stmt_bind_param($stmt, "ssss", $folderName, $dept, $parentID, $_SESSION["userID"]);
+                    mysqli_stmt_bind_param($stmt, "sss", $folderName, $parentID, $_SESSION["userID"]);
                     $insertFolderSuccess = mysqli_stmt_execute($stmt);
 
                     if ($insertFolderSuccess) {

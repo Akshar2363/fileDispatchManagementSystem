@@ -39,13 +39,13 @@ if (isset($_SESSION['userName'])) {
       <a href="index.php" class="navbarItem">Home</a>
       <a href="about.php" class="navbarItem">About</a>
       <!-- <a href="profile.php" class="navbarItem">Profile</a> -->
+      <!-- <a href="receivedFiles.php" class="navbarItem">Received Files</a> -->
+      <!-- <a href="history.php" class="navbarItem">History</a> -->
       <a href="dashboard.php" class="navbarItem">Dashboard</a>
-      <a href="receivedFiles.php" class="navbarItem">Received Files</a>
-      <a href="history.php" class="navbarItem">History</a>
       <a href="logout.php" class="navbarItem">Logout</a>
     </div>
     <div class="actions flex flex-row items-center gap-6">
-      <button><i class="fa-solid fa-bell text-2xl"></i></button>
+      <!-- <button><i class="fa-solid fa-bell text-2xl"></i></button> -->
       <!-- <button onclick="toggleTheme()" id='themeButton'><i class="fa-solid fa-moon text-2xl"></i></button> -->
     </div>
     <div class="profile hidden lg:flex flex-row items-center gap-3">
@@ -80,15 +80,19 @@ if (isset($_SESSION['userName'])) {
       <div class="flex flex-col w-full items-center justify-center gap-2">
         <a href="index.php" class="navbarItem w-full text-center rounded-lg p-2">Home</a>
         <a href="about.php" class="navbarItem w-full text-center rounded-lg p-2">About</a>
-        <a href="history.php" class="navbarItem w-full text-center rounded-lg p-2">History</a>
+        <!-- <a href="history.php" class="navbarItem w-full text-center rounded-lg p-2">History</a> -->
       </div>
       <div class="flex flex-col w-full items-center justify-center gap-2">
-        <!-- <a href="profile.php" class="navbarItem w-full text-center rounded-lg p-2">Profile</a> -->
-        <a href="dashboard.php" class="navbarItem">Dashboard</a>
-        <a href="receivedFiles.php" class="navbarItem w-full text-center rounded-lg p-2">Received Files</a>
+        <a href="dashboard.php" class="navbarItem w-full text-center rounded-lg p-2">Dashboard</a>
         <a href="logout.php" class="navbarItem w-full text-center rounded-lg p-2">Logout</a>
-
+        <!-- <a href="history.php" class="navbarItem w-full text-center rounded-lg p-2">History</a> -->
       </div>
+      
+      <!-- <div class="flex flex-col w-full items-center justify-center gap-2">
+        <a href="profile.php" class="navbarItem w-full text-center rounded-lg p-2">Profile</a>
+        <a href="receivedFiles.php" class="navbarItem w-full text-center rounded-lg p-2">Received Files</a>
+
+      </div> -->
     </div>
   </div>
 <?php

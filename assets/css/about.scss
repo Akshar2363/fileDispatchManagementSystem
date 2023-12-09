@@ -1,0 +1,15 @@
+@import 'index.scss';
+.dashboardBody {
+    @include themify($themes) {
+        .bodyContent{
+            div{
+                .logoPrefix {
+                    color: themed("textColorContrast1")
+                }
+                .logoSuffix {
+                    color: themed("textColorContrast2")
+                }
+            }
+        }
+    }
+}

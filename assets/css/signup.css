@@ -42,10 +42,35 @@ input[type=number] {
 
 .body {
   width: 100%;
+  height: calc(100vh - 80px);
+  background: #0a0a0a;
 }
 .theme-light .body .homeTop {
-  background: #0a0a0a;
   color: white;
+}
+.theme-light .body .homeTop .right .outer img, .theme-light .body .homeTop .right .inner img {
+  animation: rotateRight 25s linear infinite;
+  transform-origin: center;
+}
+@keyframes rotateRight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.theme-light .body .homeTop .right .middle img {
+  animation: rotateLeft 25s linear infinite;
+  transform-origin: center;
+}
+@keyframes rotateLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 .theme-light .body .homeSection {
   background: white;
@@ -53,8 +78,31 @@ input[type=number] {
   color: black;
 }
 .theme-dark .body .homeTop {
-  background: #0a0a0a;
   color: white;
+}
+.theme-dark .body .homeTop .right .outer img, .theme-dark .body .homeTop .right .inner img {
+  animation: rotateRight 25s linear infinite;
+  transform-origin: center;
+}
+@keyframes rotateRight {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.theme-dark .body .homeTop .right .middle img {
+  animation: rotateLeft 25s linear infinite;
+  transform-origin: center;
+}
+@keyframes rotateLeft {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
 }
 .theme-dark .body .homeSection {
   background: #1c1f22;

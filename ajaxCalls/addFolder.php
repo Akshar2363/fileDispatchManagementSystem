@@ -7,6 +7,11 @@ if (isset($_GET['folderName'])) {
     $statusMsg = '';
     if(empty($foldername)){
         $statusMsg = "Folder Name must not be empty!";
+        exit;
+    }
+    if($foldername == 'Received'){
+        $statusMsg = "Received is a reserved name. Please select a different name !";
+        exit;
     }
     if (strpos($foldername, ' ') !== false) {
         $statusMsg = "Folder name cannot contain spaces";
@@ -31,9 +36,9 @@ foreach ($disallowedCharacters as $char) {
         $destination = '../userFolders/' . $currentPath . '/' . $foldername;
 
         if (mkdir($destination)) {
-            $query = "INSERT INTO folders (folderName, folderDept, parentID, userID) VALUES (?, ?, ?, ?)";
+            $query = "INSERT INTO folders (folderName, parentID, userID) VALUES (?, ?, ?)";
             $stmt = mysqli_prepare($con, $query);
-            mysqli_stmt_bind_param($stmt, "ssss", $foldername, $_SESSION['department'], $parentID, $_SESSION["userID"]);
+            mysqli_stmt_bind_param($stmt, "sss", $foldername, $parentID, $_SESSION["userID"]);
             mysqli_stmt_execute($stmt);
 
             if (mysqli_commit($con)) {
