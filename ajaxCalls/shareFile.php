@@ -3,23 +3,21 @@
 require '../includes/db.php';
 
 
-if (isset($_POST['fileID']) && isset($_POST['receiver'])) {
-    if ($_POST['receiver'] != $_SESSION['userName']) {
+if (isset($_POST['fileID']) && isset($_POST['receiverID'])) {
+    if ($_POST['receiverID'] != $_SESSION['userID']) {
 
-    $receiverUserName = $_POST['receiver'];
+    $receiverID = $_POST['receiverID'];
     
-    $sql =  "SELECT * FROM user WHERE userName='$receiverUserName'";
+    $sql =  "SELECT * FROM user WHERE userID='$receiverID'";
 
 
     $result = mysqli_query($con,$sql);
     $statusMsg='';
-    if(mysqli_num_rows($result)>0){
 
-        
+    if(mysqli_num_rows($result)>0){
         $row = mysqli_fetch_array($result);
         $currentUserID = $_SESSION['userID'];
         $fileID = $_POST['fileID'];
-        $receiverID=$row['userID'];
         $sql =  "SELECT * FROM friends WHERE (userID='$currentUserID' AND friendID='$receiverID') OR (friendID='$currentUserID' AND userID='$receiverID')";
         $result = mysqli_query($con, $sql);
 
@@ -55,16 +53,16 @@ if (isset($_POST['fileID']) && isset($_POST['receiver'])) {
         
         }
         else{
-            $statusMsg=  $receiverUserName." is not your friend. Send a friend request to him, to share files.";
+            $statusMsg=  $receiverUserID." is not your friend. Send a friend request to him, to share files.";
             
         }
         
 
         } else {
-            $statusMsg = "Invalid Username !";
+            $statusMsg = "Invalid userID !";
         } 
     } else {
-            $statusMsg = "Invalid Username !";
+            $statusMsg = "Invalid userID !";
     }
        echo $statusMsg;
 }

@@ -27,7 +27,7 @@
 
 <?php
 
-if (isset($_SESSION['userName'])) {
+if (isset($_SESSION['userID'])) {
 ?>
 
   <nav class="navbarBody flex flex-row items-center p-4 justify-between shadow-xl">
@@ -52,7 +52,7 @@ if (isset($_SESSION['userName'])) {
       <img src="assets/icons/profile.png" class="w-[48px]" alt="">
       <div class="profileDetails flex flex-col ">
         <p class="name text-lg"><?php echo $_SESSION['Name'] ?></p>
-        <p class="username"><?php echo $_SESSION['userName'] ?></p>
+        <p class="userID"><?php echo $_SESSION['userID'] ?></p>
       </div>
     </div>
 
@@ -72,7 +72,7 @@ if (isset($_SESSION['userName'])) {
         <img src="assets/icons/profile.png" class="w-[48px]" alt="">
         <div class="profileDetails flex flex-col ">
           <p class="name text-lg"><?php echo $_SESSION['Name'] ?></p>
-          <p class="username"><?php echo $_SESSION['userName'] ?></p>
+          <p class="userID"><?php echo $_SESSION['userID'] ?></p>
         </div>
       </div>
     </div>

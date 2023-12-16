@@ -32,7 +32,7 @@
             <div class="right md:w-[50%] p-8 gap-2 md:gap-3 bg-white justify-around ">
                 <div class='text-[#2e3e6a] text-3xl py-4 '>Login</div>
                 <form action="endpoints/loginSubmit.php" method="POST" class='flex flex-col gap-2 md:gap-3 '>
-                    <input class="p-2 my-1 w-full text-black border-b-2" type="text" name="username" id="username" placeholder='Username' />
+                    <input class="p-2 my-1 w-full text-black border-b-2" type="text" name="userID" id="userID" placeholder='User ID' />
                     <input class="p-2 my-1 w-full text-black border-b-2" type="password" name="password" id="password" placeholder='Password' />
                     <div class="remember flex flex-row items-center justify-start">
                         <input type="checkbox" value="lsRememberMe" id="rememberMe" class='w-4 h-4' /><label htmlFor="rememberMe" class='text-[#2e3e6a]'>&nbsp;Remember me</label>

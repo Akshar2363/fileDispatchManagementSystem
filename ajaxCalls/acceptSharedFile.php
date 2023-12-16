@@ -12,8 +12,8 @@ if(isset($_POST['dispatchID']) && isset($_POST['fileID'])){
         if($result){
             $row = mysqli_fetch_assoc($result);
             $src = '../'.$row['filePath'];
-            $senderRootDirectory = $row['userID'].$row['userName'].$row['contactNo'];
-            $dest = '../userFolders/'.$_SESSION['userID'].$_SESSION['userName'].$_SESSION['contactNo'].'/Received'.'/'.$senderRootDirectory;
+            $senderRootDirectory = $row['userID'].$row['Name'].$row['contactNo'];
+            $dest = '../userFolders/'.$_SESSION['userID'].$_SESSION['Name'].$_SESSION['contactNo'].'/Received'.'/'.$senderRootDirectory;
             if(!is_dir($dest)){
                 mkdir($dest);
             }

@@ -22,7 +22,7 @@ include "includes/db.php";
 
 
     <?php
-    if (!isset($_SESSION['userName'])) {
+    if (!isset($_SESSION['userID'])) {
     ?>
         <script>
             alert("Please login to view your Files...");
