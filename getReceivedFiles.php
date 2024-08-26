@@ -65,7 +65,7 @@
 <?php
 
 
-if (isset($_SESSION['userName'])) {
+if (isset($_SESSION['userID'])) {
     $userID = $_SESSION['userID'];
     $folderID = -2;
     $sql = "SELECT * FROM dispatch, files, user WHERE dispatch.dispatchTo='$userID' AND user.userID=dispatch.dispatchBy AND files.fileID=dispatch.fileID AND status='Pending'";
@@ -92,7 +92,7 @@ if (isset($_SESSION['userName'])) {
                         <td><i class="fa fa-file text-blue-400"></i></td>
                         <td class="p-2 text-start"><?php echo $file['fileName']; ?></td>
                         <td class="p-2"><?php echo $file['fileType']; ?></td>
-                        <td class="p-2"><?php echo $file['Name'] . ' ( ' . $file['userName'] . ' )'; ?></td>
+                        <td class="p-2"><?php echo $file['Name'] . ' ( ' . $file['userID'] . ' )'; ?></td>
                         <td class="p-2"><?php echo $file['dispatchTimestamp']; ?></td>
                         <td class="p-2"><?php echo $file['comments']; ?></td>
                         <td class="p-2"><button onclick="acceptFile('<?php echo $file['dispatchID'] ?>', '<?php echo $file['fileID'] ?>')"><i class="fa fa-check p-2 rounded-full border text-green-500 hover:bg-gray-300"></i></button></td>
@@ -136,15 +136,15 @@ if (isset($_SESSION['userName'])) {
             <tbody>
                 <?php
                 foreach ($result as $file) {
-                    $sender = $file['userID'] . $file['userName'] . $file['contactNo'];
-                    $rootDirectory = $_SESSION['userID'] . $_SESSION['userName'] . $_SESSION['contactNo'];
+                    $sender = $file['userID'] . $file['Name'] . $file['contactNo'];
+                    $rootDirectory = $_SESSION['userID'] . $_SESSION['Name'] . $_SESSION['contactNo'];
                 ?>
                     <tr>
                     <td><i class="fa fa-file text-blue-400"></i></td>
 
                         <td class="p-2 text-start"><?php echo $file['fileName']; ?></td>
                         <td class="p-2"><?php echo $file['fileType']; ?></td>
-                        <td class="p-2"><?php echo $file['Name'] . ' ( ' . $file['userName'] . ' )'; ?></td>
+                        <td class="p-2"><?php echo $file['Name'] . ' ( ' . $file['userID'] . ' )'; ?></td>
                         <td class="p-2"><?php echo $file['dispatchTimestamp']; ?></td>
                         <td class="p-2"><?php echo $file['comments']; ?></td>
 

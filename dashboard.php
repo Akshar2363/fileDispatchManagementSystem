@@ -20,9 +20,8 @@ include "includes/db.php";
 
 <body id='theme' class="theme-dark flex min-h-[100vh] flex-col">
 
-
     <?php
-    if (!isset($_SESSION['userName'])) {
+    if (!isset($_SESSION['userID'])) {
     ?>
         <script>
             alert("Please login to view your Files...");

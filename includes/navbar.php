@@ -27,14 +27,16 @@
 
 <?php
 
-if (isset($_SESSION['userName'])) {
+if (isset($_SESSION['userID'])) {
 ?>
 
   <nav class="navbarBody flex flex-row items-center p-4 justify-between shadow-xl">
-    <div class="logo flex flex-row items-center gap-3 text-3xl font-bold">
-      <img src="assets/icons/fileShare.png" alt="" class="w-[48px]" class="logoIcon">
-      <div class="block"><span class="logoPrefix">File</span><span class="logoSuffix">Share</span></div>
-    </div>
+    <a href="index.php">
+      <div class="logo flex flex-row items-center gap-3 text-3xl font-bold">
+        <img src="assets/icons/fileShare.png" alt="" class="w-[48px]" class="logoIcon">
+        <div class="block"><span class="logoPrefix">File</span><span class="logoSuffix">Share</span></div>
+      </div>
+    </a>
     <div class="navbarItems text-lg hidden lg:flex flex-row items-center gap-6">
       <a href="index.php" class="navbarItem">Home</a>
       <a href="about.php" class="navbarItem">About</a>
@@ -52,7 +54,7 @@ if (isset($_SESSION['userName'])) {
       <img src="assets/icons/profile.png" class="w-[48px]" alt="">
       <div class="profileDetails flex flex-col ">
         <p class="name text-lg"><?php echo $_SESSION['Name'] ?></p>
-        <p class="username"><?php echo $_SESSION['userName'] ?></p>
+        <p class="userID"><?php echo $_SESSION['userID'] ?></p>
       </div>
     </div>
 
@@ -69,10 +71,10 @@ if (isset($_SESSION['userName'])) {
   <div id="navbarSmall" class="hidden shadow-xl border-b absolute top-[80px] left-0 z-50 w-full flex flex-col items-center justify-center lg:hidden gap-2 p-2">
     <div class="smallNavTop flex flex-row w-full items-center justify-between px-4">
       <div class="profile lg:hidden flex flex-row items-center gap-3">
-        <img src="assets/icons/profile.png" class="w-[48px]" alt="">
+        <a href="index.php"><img src="assets/icons/profile.png" class="w-[48px]" alt=""></a>
         <div class="profileDetails flex flex-col ">
           <p class="name text-lg"><?php echo $_SESSION['Name'] ?></p>
-          <p class="username"><?php echo $_SESSION['userName'] ?></p>
+          <p class="userID"><?php echo $_SESSION['userID'] ?></p>
         </div>
       </div>
     </div>
@@ -87,7 +89,7 @@ if (isset($_SESSION['userName'])) {
         <a href="logout.php" class="navbarItem w-full text-center rounded-lg p-2">Logout</a>
         <!-- <a href="history.php" class="navbarItem w-full text-center rounded-lg p-2">History</a> -->
       </div>
-      
+
       <!-- <div class="flex flex-col w-full items-center justify-center gap-2">
         <a href="profile.php" class="navbarItem w-full text-center rounded-lg p-2">Profile</a>
         <a href="receivedFiles.php" class="navbarItem w-full text-center rounded-lg p-2">Received Files</a>

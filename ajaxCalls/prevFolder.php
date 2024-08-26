@@ -4,7 +4,7 @@ include '../includes/db.php';
 if($_SESSION['currentFolderIndex'] == 0){
     echo "Cannot go Back";
 }
-else if (isset($_SESSION['userName'])) {
+else if (isset($_SESSION['userID'])) {
     array_pop($_SESSION['folders']);
     $_SESSION['currentFolderIndex']--;
     $currentPath = $_SESSION['currentPath'];

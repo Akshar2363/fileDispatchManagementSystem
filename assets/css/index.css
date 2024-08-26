@@ -42,7 +42,7 @@ input[type=number] {
 
 .body {
   width: 100%;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   background: #0a0a0a;
 }
 .theme-light .body .homeTop {

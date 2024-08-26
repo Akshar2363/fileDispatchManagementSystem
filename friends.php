@@ -27,7 +27,7 @@ include "includes/db.php";
 
 
     <?php
-    if (!isset($_SESSION['userName'])) {
+    if (!isset($_SESSION['userID'])) {
     ?>
         <script>
             alert("Please login to view your Files...");
@@ -73,7 +73,7 @@ include "includes/db.php";
                                 <img src="assets/icons/profile.png" class="w-[48px]" alt="">
                                 <div class="profileDetails flex flex-col ">
                                     <p class="name text-lg font-semibold"><?php echo $row['Name'] ?></p>
-                                    <p class="username "><?php echo $row['userName'] ?></p>
+                                    <p class="userID"><?php echo $row['userID'] ?></p>
                                 </div>
                             </div>
                             <button onclick="deleteFriend('<?php echo $row['userID'] ?>')" class="addFriend bg-red-500 rounded-lg px-4 py-1 text-white"> <i class="fa fa-trash"></i> </button>
@@ -101,7 +101,7 @@ include "includes/db.php";
                                 <img src="assets/icons/profile.png" class="w-[48px]" alt="">
                                 <div class="profileDetails flex flex-col ">
                                     <p class="name text-lg font-semibold"><?php echo $row['Name'] ?></p>
-                                    <p class="username "><?php echo $row['userName'] ?></p>
+                                    <p class="userID "><?php echo $row['userID'] ?></p>
                                 </div>
                             </div>
                             <button onclick="withdrawRequest('<?php echo $row['userID'] ?>')" class="acceptRequest py-1 px-4 rounded-lg text-white bg-red-500"><i class="fa fa-trash"></i></button>
@@ -129,7 +129,7 @@ include "includes/db.php";
                                 <img src="assets/icons/profile.png" class="w-[48px]" alt="">
                                 <div class="profileDetails flex flex-col ">
                                     <p class="name text-lg font-semibold"><?php echo $row['Name'] ?></p>
-                                    <p class="username "><?php echo $row['userName'] ?></p>
+                                    <p class="userID "><?php echo $row['userID'] ?></p>
                                 </div>
                             </div>
                             <button onclick="acceptFriend('<?php echo $row['userID'] ?>')" class="acceptRequest py-1 px-4 rounded-lg text-white bg-green-500">Yes</button>
@@ -176,7 +176,7 @@ include "includes/db.php";
                                         <img src="assets/icons/profile.png" class="w-[48px]" alt="">
                                         <div class="profileDetails flex flex-col ">
                                             <p class="name text-lg font-semibold"><?php echo $row['Name'] ?></p>
-                                            <p class="username"><?php echo $row['userName'] ?></p>
+                                            <p class="userID"><?php echo $row['userID'] ?></p>
                                         </div>
                                     </div>
                                     <button onclick="requestFriend('<?php echo $row['userID'] ?>')" class="addFriend bg-green-500 rounded-lg px-4 py-1 text-white"> + </button>

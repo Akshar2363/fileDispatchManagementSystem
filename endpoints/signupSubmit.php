@@ -5,20 +5,15 @@ if (isset($_POST['submit'])) {
     $fname = mysqli_real_escape_string($con, $_POST['fname']);
     $lname = mysqli_real_escape_string($con, $_POST['lname']);
     $name = $fname . " " . $lname;
-    $username = mysqli_real_escape_string($con, $_POST['username']);
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = md5(mysqli_real_escape_string($con, $_POST['password']));
     $phone = mysqli_real_escape_string($con, $_POST['contact']);
 
     mysqli_autocommit($con, false); // Turn off autocommit to start a transaction
 
-    $sql = "SELECT username FROM user WHERE username='$username'";
-    $result = mysqli_query($con, $sql);
-
-    if (mysqli_num_rows($result) == 0) {
-        $query = "INSERT INTO user (userName, Name, emailID, password, contactNo) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO user (Name, emailID, password, contactNo) VALUES ( ?, ?, ?, ?)";
         $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "sssss", $username, $name, $email, $password, $phone);
+        mysqli_stmt_bind_param($stmt, "ssss" , $name, $email, $password, $phone);
         $insertUserSuccess = mysqli_stmt_execute($stmt);
 
         if ($insertUserSuccess) {
@@ -28,13 +23,12 @@ if (isset($_POST['submit'])) {
             $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
             $_SESSION["userID"] = $row["userID"];
-            $_SESSION['userName'] = $row["userName"];
             $_SESSION['Name'] = $row["Name"];
             $_SESSION["emailID"] = $row["emailID"];
             $_SESSION["password"] = $row["password"];
             $_SESSION["contactNo"] = $row["contactNo"];
             
-            $folderName = $_SESSION["userID"] . $_SESSION['userName'] . $_SESSION['contactNo'];
+            $folderName = $_SESSION["userID"] . $_SESSION['Name'] . $_SESSION['contactNo'];
             $parentID = -1;
 
             if (mkdir("../userFolders/" . $folderName)) {
@@ -100,13 +94,6 @@ if (isset($_POST['submit'])) {
             <?php
             mysqli_stmt_close($stmt);
         }
-    } else {
-        ?>
-        <script>
-            alert("User with this username already exists");
-            location.href = "../login.php";
-        </script>
-        <?php
-    }
+   
 }
 ?>

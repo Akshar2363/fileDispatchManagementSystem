@@ -131,7 +131,7 @@ input[type=number] {
 .theme-light .navbarBody .profile .profileDetails .name {
   color: black;
 }
-.theme-light .navbarBody .profile .profileDetails .username {
+.theme-light .navbarBody .profile .profileDetails .userID {
   color: rgb(34, 33, 33);
 }
 .theme-light .navbarBody #toggleBtn .btn-open .bar1 {
@@ -173,7 +173,7 @@ input[type=number] {
 .theme-dark .navbarBody .profile .profileDetails .name {
   color: white;
 }
-.theme-dark .navbarBody .profile .profileDetails .username {
+.theme-dark .navbarBody .profile .profileDetails .userID {
   color: #a6a7a9;
 }
 .theme-dark .navbarBody #toggleBtn .btn-open .bar1 {
