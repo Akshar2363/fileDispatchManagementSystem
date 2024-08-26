@@ -14,6 +14,8 @@ include_once 'includes/db.php';
   <link rel="shortcut icon" href="icons/head.png" type="image/x-icon">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="assets/js/tailwind.js"></script>
+  <link rel="icon" type="image/x-icon" href="assets/icons/fileShare.png">
+
 </head>
 
 <body>

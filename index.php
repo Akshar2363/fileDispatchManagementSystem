@@ -12,7 +12,7 @@ include "includes/db.php"
     <link href="assets/css/navbar.css" rel="stylesheet">
     <script src="assets/js/tailwind.js"></script>
     <script src="https://kit.fontawesome.com/c97f0fb9ac.js" crossorigin="anonymous"></script>
-
+    <link rel="icon" type="image/x-icon" href="assets/icons/fileShare.png">
 </head>
 
 <body id='theme' class="theme-dark body">

@@ -7,6 +7,7 @@
     <title>Login</title>
     <link href="assets/css/login.css" rel="stylesheet">
     <script src="assets/js/tailwind.js"></script>
+    <link rel="icon" type="image/x-icon" href="assets/icons/fileShare.png">
 
 </head>
 <body>

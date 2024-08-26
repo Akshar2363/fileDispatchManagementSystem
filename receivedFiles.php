@@ -14,6 +14,7 @@ include "includes/db.php";
     <link rel="stylesheet" href="assets/css/receivedFiles.css">
     <link rel="stylesheet" href="assets/css/leftbar.css">
     <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="assets/icons/fileShare.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://kit.fontawesome.com/c97f0fb9ac.js" crossorigin="anonymous"></script>
 </head>
